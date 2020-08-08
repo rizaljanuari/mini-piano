@@ -10,6 +10,28 @@ class XylophoneApp extends StatelessWidget {
     play.play('note$note.wav');
   }
 
+  // buildKey membuat widget yang bisa dipakai berulang kali dengan argument yang berbeda
+  Expanded buildKey({Color color, int numberButton, int numberNote}) {
+    return Expanded(
+      child: Container(
+        color: color,
+        child: ListTile(
+          trailing: Text(
+            '$numberButton',
+            style: TextStyle(
+                fontSize: 46.0,
+                fontWeight: FontWeight.w900,
+                color: Colors.white),
+            textAlign: TextAlign.center,
+          ),
+          onTap: () {
+            playButton(numberNote);
+          },
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -17,113 +39,16 @@ class XylophoneApp extends StatelessWidget {
         backgroundColor: Colors.black,
         body: SafeArea(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Expanded(
-                child: Container(
-                  color: Colors.yellow,
-                  child: ListTile(
-                    trailing: Text(
-                      '1',
-                      style: TextStyle(
-                          fontSize: 46.0, fontWeight: FontWeight.w900),
-                    ),
-                    onTap: () {
-                      playButton(1);
-                    },
-                  ),
-                ),
-              ),
-              Expanded(
-                child: Container(
-                  color: Colors.deepPurple,
-                  child: ListTile(
-                    trailing: Text(
-                      '2',
-                      style: TextStyle(
-                          fontSize: 46.0, fontWeight: FontWeight.w900),
-                    ),
-                    onTap: () {
-                      playButton(2);
-                    },
-                  ),
-                ),
-              ),
-              Expanded(
-                child: Container(
-                  color: Colors.green,
-                  child: ListTile(
-                    trailing: Text(
-                      '3',
-                      style: TextStyle(
-                          fontSize: 46.0, fontWeight: FontWeight.w900),
-                    ),
-                    onTap: () {
-                      playButton(3);
-                    },
-                  ),
-                ),
-              ),
-              Expanded(
-                child: Container(
-                  color: Colors.indigo,
-                  child: ListTile(
-                    trailing: Text(
-                      '4',
-                      style: TextStyle(
-                          fontSize: 46.0, fontWeight: FontWeight.w900),
-                    ),
-                    onTap: () {
-                      playButton(4);
-                    },
-                  ),
-                ),
-              ),
-              Expanded(
-                child: Container(
-                  color: Colors.red,
-                  child: ListTile(
-                    trailing: Text(
-                      '5',
-                      style: TextStyle(
-                          fontSize: 46.0, fontWeight: FontWeight.w900),
-                    ),
-                    onTap: () {
-                      playButton(5);
-                    },
-                  ),
-                ),
-              ),
-              Expanded(
-                child: Container(
-                  color: Colors.orange,
-                  child: ListTile(
-                    trailing: Text(
-                      '6',
-                      style: TextStyle(
-                          fontSize: 46.0, fontWeight: FontWeight.w900),
-                    ),
-                    onTap: () {
-                      playButton(6);
-                    },
-                  ),
-                ),
-              ),
-              Expanded(
-                child: Container(
-                  color: Colors.cyan,
-                  child: ListTile(
-                    trailing: Text(
-                      '7',
-                      style: TextStyle(
-                          fontSize: 46.0, fontWeight: FontWeight.w900),
-                    ),
-                    onTap: () {
-                      playButton(7);
-                    },
-                  ),
-                ),
-              ),
+              buildKey(
+                  color: Colors.yellowAccent, numberButton: 1, numberNote: 1),
+              buildKey(color: Colors.yellow, numberButton: 2, numberNote: 2),
+              buildKey(color: Colors.amber, numberButton: 3, numberNote: 3),
+              buildKey(color: Colors.orange, numberButton: 4, numberNote: 4),
+              buildKey(
+                  color: Colors.deepOrangeAccent, numberButton: 5, numberNote: 5),
+              buildKey(color: Colors.redAccent, numberButton: 6, numberNote: 6),
+              buildKey(color: Colors.red, numberButton: 7, numberNote: 7),
             ],
           ),
         ),
